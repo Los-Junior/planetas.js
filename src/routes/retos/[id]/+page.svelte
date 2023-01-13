@@ -1,15 +1,18 @@
 <script lang="ts">
 	import Navbar from '../../../components/challenges/Navbar.svelte';
+
 	/** @type {import('./$types').PageData} */
 	export let data;
 	import * as monaco from 'monaco-editor';
 
 	import { onMount } from 'svelte';
-	import { challenges, challengesObject } from '../../../data/challenges';
+	import { challengesObject } from '../../..//data/challenges';
+	import Description from '../../../components/challenges/Description.svelte';
 
 	const challenge = challengesObject[data.id];
 
 	let el: HTMLDivElement;
+
 	onMount(() => {
 		monaco.editor.defineTheme('juniorTheme', {
 			base: 'vs',
@@ -46,6 +49,6 @@
 	<div class="flex-1 h-[80vh]" bind:this={el} />
 
 	<div class="relative h-screen overflow-scroll w-[40%] text-white">
-		{challenge.description}
+		<Description markdown={challenge.description} />
 	</div>
 </div>

@@ -11,9 +11,10 @@ Qué debe tener nuestra aplicación
 
 PARA DESPUÉS:
 
-- [ ] Crear nuestro tema de Monaco Editor
 - [ ] Terminar navbar
 - [ ] Crear Logo
 - [ ] Formatear la descripción del reto
 - [ ] Setear bien los valores iniciales de nuestro retos.
+
+- [ ] Crear nuestro tema de Monaco Editor
 - [ ] Tabla de clasificaciones.
