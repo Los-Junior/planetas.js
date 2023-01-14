@@ -16,7 +16,9 @@
 	const handleHtml = async () => {
 		let toHtml = await unified().use(remarkParse).use(remarkHtml).process(markdown);
 
-		const withClasses = await rehype().use(addClasses, { code: 'language-js' }).process(toHtml);
+		const withClasses = await rehype()
+			.use(addClasses, { code: 'language-js rounded' })
+			.process(toHtml);
 
 		let html = rehype().use(rehypePrism, { languages: { javascript } }).processSync(withClasses);
 
@@ -31,9 +33,10 @@
 	});
 </script>
 
-<svelte:head />
-{#await html then html}
-	<div class="prose prose-invert">
-		{@html html}
-	</div>
-{/await}
+<div class="relative max-h-[80vh] overflow-scroll w-[40%] text-white">
+	{#await html then html}
+		<div class="prose prose-invert prose-xl px-8">
+			{@html html}
+		</div>
+	{/await}
+</div>

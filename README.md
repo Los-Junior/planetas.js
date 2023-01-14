@@ -11,10 +11,13 @@ Qué debe tener nuestra aplicación
 
 PARA DESPUÉS:
 
-- [ ] Terminar navbar
-- [ ] Crear Logo
-- [ ] Formatear la descripción del reto
+- [x] Terminar navbar
+- [x] Crear Logo
+- [x] Formatear la descripción del reto
 - [ ] Setear bien los valores iniciales de nuestro retos.
+- [ ] Agregar Intellisense al editor de texto.
+- [ ] Agregar estilos a nuestro markdown.
 
 - [ ] Crear nuestro tema de Monaco Editor
 - [ ] Tabla de clasificaciones.
+- [ ] Buscar info sobre carpeta References.

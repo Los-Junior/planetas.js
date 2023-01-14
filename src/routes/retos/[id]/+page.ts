@@ -13,3 +13,5 @@ export function load({ params }: Props) {
 	}
 	return { id: params.id };
 }
+
+export const ssr = false;

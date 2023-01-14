@@ -1,54 +1,27 @@
 <script lang="ts">
+	import { challengesObject } from '../../..//data/challenges';
 	import Navbar from '../../../components/challenges/Navbar.svelte';
 
 	/** @type {import('./$types').PageData} */
-	export let data;
-	import * as monaco from 'monaco-editor';
+	export let data: { id: string };
 
-	import { onMount } from 'svelte';
-	import { challengesObject } from '../../..//data/challenges';
 	import Description from '../../../components/challenges/Description.svelte';
+	import MobileNavbar from '../../../components/challenges/MobileNavbar.svelte';
+	import Editor from '../../../components/challenges/Editor.svelte';
 
 	const challenge = challengesObject[data.id];
 
-	let el: HTMLDivElement;
-
-	onMount(() => {
-		monaco.editor.defineTheme('juniorTheme', {
-			base: 'vs',
-			inherit: true,
-			rules: [{ background: '#EDF9FA', token: '' }],
-			colors: {
-				'editor.foreground': '#ffffff',
-				'editor.background': '#170312',
-				'editorCursor.foreground': '#97D8B2',
-				'editor.lineHighlightBackground': '#0000FF20',
-				'editorLineNumber.foreground': '#008800',
-				'editor.selectionBackground': '#531253',
-				'editor.inactiveSelectionBackground': '#88000015',
-				'editorIndentGuide.background': '#33032F',
-				'editorBracketMatch.border': '#ffffff'
-			}
-		});
-		monaco.editor.setTheme('juniorTheme');
-
-		const editorInstance = monaco.editor.create(el, {
-			value: challenge.initialCode,
-			language: challenge.language
-		});
-
-		editorInstance.updateOptions({
-			fontSize: 20,
-			minimap: { enabled: false }
-		});
-	});
+	let isSidebarOpen = false;
+	let openNavbar = (value: boolean) => {
+		isSidebarOpen = value;
+	};
 </script>
 
-<Navbar />
-<div class="bg-brand-dark flex pt-6">
-	<div class="flex-1 h-[80vh]" bind:this={el} />
-
-	<div class="relative h-screen overflow-scroll w-[40%] text-white">
+<div class="relative h-screen bg-brand-dark">
+	<Navbar {openNavbar} {isSidebarOpen} {challenge} />
+	<MobileNavbar {openNavbar} isOpen={isSidebarOpen} />
+	<div class="flex pt-6">
+		<Editor {challenge} />
 		<Description markdown={challenge.description} />
 	</div>
 </div>

@@ -12,6 +12,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@rgossiaux/svelte-headlessui": "^1.0.2",
 		"@sveltejs/adapter-auto": "^1.0.0",
 		"@sveltejs/kit": "^1.0.0",
 		"@tailwindcss/typography": "^0.5.9",
@@ -51,6 +52,7 @@
 		"remark-parse": "^10.0.1",
 		"remark-rehype": "^10.1.0",
 		"svelte-highlight": "^7.1.2",
+		"svelte-icons": "^2.1.0",
 		"to-vfile": "^7.2.3",
 		"unified": "^10.1.2",
 		"xdm": "^3.4.0"
