@@ -6,7 +6,8 @@ export interface Challenge {
 	solution: any;
 	initialCode: string;
 	language: string;
-	tests: Array<any>;
+	testFile: string;
+	fnInput: any;
 }
 
 export const DefaultChallenge: Challenge = {
@@ -16,6 +17,7 @@ export const DefaultChallenge: Challenge = {
 	description: '',
 	solution: '',
 	initialCode: '',
+	testFile: '',
 	language: '',
-	tests: []
+	fnInput: ''
 };

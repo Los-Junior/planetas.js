@@ -12,6 +12,36 @@ export const challengesObject: { [key: string]: Challenge } = {
 	return []
 }`,
 		language: 'javascript',
-		tests: []
+		fnInput: "['cat', 'game', 'socks']",
+		testFile: `
+const chai = require('chai')
+module.exports = function tests (output) {
+	const expect = chai.expect
+	console.log(output)
+
+
+
+try {
+	expect(output).to.be.an('array')
+} catch (err) {
+	return 'Se espera que el output sea un array.'
+}
+
+
+try {
+	expect(output).to.be(["***** *cat* *****", "****** *game* ******", "******* *socks* *******"])
+} catch (err) {
+	return 'Respuesta inválida'
+}
+
+try {
+	expect(output).to.be.an('array')
+} catch (err) {
+	return 'Se espera que el output sea un array.'
+}
+
+return 'Has pasado los tests, felicidades.'
+}
+`
 	}
 };

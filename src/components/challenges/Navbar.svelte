@@ -12,14 +12,16 @@
 <MainContainer className="relative border-b border-brand-light-purple">
 	<div class="flex justify-between items-center bg-brand-dark text-white py-6">
 		<div class="flex space-x-8">
-			<div class="flex space-x-2 items-center">
-				<img
-					src={'/advent-logo.png'}
-					alt="Logo de Advent of Juniors - Resuelve problemas de programación"
-					class="w-6 h-6"
-				/>
-				<p class="text-xs text-brand-green">Advent of Juniors</p>
-			</div>
+			<a href="/">
+				<div class="flex space-x-2 items-center">
+					<img
+						src={'/advent-logo.png'}
+						alt="Logo de Advent of Juniors - Resuelve problemas de programación"
+						class="w-6 h-6"
+					/>
+					<p class="text-xs text-brand-green">Advent of Juniors</p>
+				</div>
+			</a>
 			<div class="hidden xl:flex space-x-2 items-center ">
 				<h3 class="text-xl">{challenge.name}</h3>
 				<p class="text-xs px-2 py-1 bg-brand-green text-brand-dark-purple rounded">
