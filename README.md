@@ -18,6 +18,6 @@ PARA DESPUÉS:
 - [ ] Agregar Intellisense al editor de texto.
 - [ ] Agregar estilos a nuestro markdown.
 
-- [ ] Crear nuestro tema de Monaco Editor
+- [x] Crear nuestro tema de Monaco Editor
 - [ ] Tabla de clasificaciones.
 - [ ] Buscar info sobre carpeta References.

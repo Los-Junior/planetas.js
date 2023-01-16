@@ -10,7 +10,11 @@
 		monaco.editor.defineTheme('juniorTheme', {
 			base: 'vs',
 			inherit: true,
-			rules: [{ background: '#EDF9FA', token: '' }],
+			rules: [
+				{ background: '#EDF9FA', token: '' },
+				{ token: 'delimiter', foreground: '#0496ff' },
+				{ token: 'delimiter.bracket', foreground: '#d81159' }
+			],
 			colors: {
 				'editor.foreground': '#ffffff',
 				'editor.background': '#170312',
@@ -19,8 +23,7 @@
 				'editorLineNumber.foreground': '#008800',
 				'editor.selectionBackground': '#531253',
 				'editor.inactiveSelectionBackground': '#88000015',
-				'editorIndentGuide.background': '#33032F',
-				'editorBracketMatch.border': '#ffffff'
+				'editorIndentGuide.background': '#33032F'
 			}
 		});
 		monaco.editor.setTheme('juniorTheme');
@@ -32,7 +35,10 @@
 
 		editorInstance.updateOptions({
 			fontSize: 20,
-			minimap: { enabled: false }
+			minimap: { enabled: false },
+			bracketPairColorization: {
+				enabled: true
+			}
 		});
 	});
 </script>

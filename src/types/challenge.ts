@@ -6,6 +6,7 @@ export interface Challenge {
 	solution: any;
 	initialCode: string;
 	language: string;
+	tests: Array<any>;
 }
 
 export const DefaultChallenge: Challenge = {
@@ -15,5 +16,6 @@ export const DefaultChallenge: Challenge = {
 	description: '',
 	solution: '',
 	initialCode: '',
-	language: ''
+	language: '',
+	tests: []
 };
