@@ -3,7 +3,28 @@
 	export let challenge: Challenge = DefaultChallenge;
 	import * as monaco from 'monaco-editor';
 	import { onMount } from 'svelte';
-	export let user = false;
+	export let user = true;
+
+	let userAnswer = challenge.initialCode;
+
+	const submitCode = async () => {
+		const res = await fetch(`/api/test`, {
+			method: 'POST',
+			headers: { 'content-type': 'application/json' },
+			body: JSON.stringify({ userAnswer })
+		});
+		if (!res.ok) {
+			alert('Algo pasó mal. Inténtalo de nuevo.');
+			return;
+		}
+
+		alert(JSON.stringify(await res.json()));
+	};
+
+	const handleEditorChange = (e: any) => {
+		userAnswer = e.target.value;
+	};
+
 	let el: HTMLDivElement;
 
 	onMount(() => {
@@ -44,9 +65,11 @@
 </script>
 
 <div class="flex-1 flex flex-col items-center">
-	<div class="h-[70vh] w-full" bind:this={el} />
+	<div class="h-[70vh] w-full" bind:this={el} on:change={handleEditorChange} />
 	{#if user}
-		<button>Enviar Reto</button>
+		<button class="w-[90%] py-2 rounded bg-brand-light-purple text-white" on:click={submitCode}
+			>Enviar respuesta</button
+		>
 	{:else}
 		<button class="w-[90%] py-2 rounded bg-brand-light-purple text-white"
 			>Haz login con Github</button
