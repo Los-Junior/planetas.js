@@ -8,6 +8,7 @@ export interface Challenge {
 	initialCode: string;
 	language: string;
 	testFile: string;
+	fnResult: string;
 	fnInput: any;
 }
 
@@ -21,5 +22,6 @@ export const DefaultChallenge: Challenge = {
 	initialCode: '',
 	testFile: '',
 	language: '',
-	fnInput: ''
+	fnInput: '',
+	fnResult: ''
 };

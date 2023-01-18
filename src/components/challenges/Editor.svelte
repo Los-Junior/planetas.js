@@ -18,16 +18,18 @@
 			headers: { 'content-type': 'application/json' },
 			body: JSON.stringify({ userAnswer, challengeId: 1 })
 		});
+		const { message } = await res.json();
 		if (!res.ok) {
-			alert('Algo pasó mal. Inténtalo de nuevo.');
+			alert(message);
 			return;
 		}
 
-		alert(JSON.stringify(await res.json()));
+		alert(message);
 	};
 
 	const handleEditorChange = (e: any) => {
 		userAnswer = e.target.value;
+		localStorage.setItem(`@reto${challenge.id}`, e.target.value);
 		console.log(e.target.value);
 	};
 
@@ -72,8 +74,12 @@
 		});
 		monaco.editor.setTheme('juniorTheme');
 
+		const prepopulatedAnswer = localStorage.getItem(`@reto${challenge.id}`);
+
+		if (prepopulatedAnswer) userAnswer = prepopulatedAnswer;
+
 		const editorInstance = monaco.editor.create(el, {
-			value: challenge.initialCode,
+			value: prepopulatedAnswer ? prepopulatedAnswer : challenge.initialCode,
 			language: challenge.language
 		});
 

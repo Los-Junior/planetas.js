@@ -1,37 +1,33 @@
 import { NodeVM } from 'vm2';
-import chai from 'chai';
-import mocha from 'mocha';
 import { challengesObject } from '../../../data/challenges';
 import type { RequestHandler } from './$types';
 
 export const POST = (async ({ request, params }) => {
 	const { userAnswer, challengeId } = await request.json();
 	const challenge = challengesObject[challengeId];
+	const fnInput = JSON.parse(challenge.fnInput);
+	const expectedResult = JSON.parse(challenge.fnResult);
 
-	const sandbox = new NodeVM();
-	const testSandbox = new NodeVM({
-		sandbox: { mocha, chai },
+	const vm = new NodeVM({ console: 'inherit', sandbox: {} });
+	const fn = vm.run(userAnswer, 'vm.js');
+	const output = await fn(fnInput);
+
+	const testVM = new NodeVM({
 		require: {
 			external: {
-				transitive: true,
-				modules: ['mocha', 'chai']
-			},
-			builtin: ['assert']
-		}
+				modules: ['mocha', 'chai'],
+				transitive: false
+			}
+		},
+		console: 'inherit'
 	});
-
-	console.log(JSON.parse(challenge.fnInput));
-
-	const fn = sandbox.run(userAnswer, 'vm.js');
-	const output = fn(JSON.parse(challenge.fnInput));
-
-	const testFn = testSandbox.run(challenge.testFile, 'vm.js');
-	let testOutput;
+	const testFn = testVM.run(challenge.testFile, 'vm.js');
 	try {
-		testOutput = testFn(output);
-	} catch (error) {
-		testOutput = error;
+		const testOutput = testFn(expectedResult, output);
+		// TODO: Agregar reto a lista de retos completados del usuario.
+		return new Response(JSON.stringify({ message: testOutput }), { status: 200 });
+	} catch (error: any) {
+		console.log(error);
+		return new Response(JSON.stringify({ message: error }), { status: 400 });
 	}
-
-	return new Response(JSON.stringify(testOutput));
 }) satisfies RequestHandler;

@@ -13,33 +13,25 @@ export const challengesObject: { [key: string]: Challenge } = {
 	return []
 }`,
 		language: 'javascript',
-		fnInput: "['cat', 'game', 'socks']",
+		fnInput: `["cat", "game", "socks"]`,
+		fnResult: `["**** *cat* ****", "**** *game* ****", "**** *socks* ****"]`,
 		testFile: `
 const chai = require('chai')
-module.exports = function tests (output) {
+module.exports = function tests (result, output) {
 	const expect = chai.expect
-	console.log(output)
-
-
 
 try {
 	expect(output).to.be.an('array')
 } catch (err) {
-	return 'Se espera que el output sea un array.'
-}
-
-
-try {
-	expect(output).to.be(["***** *cat* *****", "****** *game* ******", "******* *socks* *******"])
-} catch (err) {
-	return 'Respuesta inválida'
+	throw 'Se espera que el output sea un array.'
 }
 
 try {
-	expect(output).to.be.an('array')
+	expect(output).to.eql(result)
 } catch (err) {
-	return 'Se espera que el output sea un array.'
+	throw 'Respuesta inválida'
 }
+
 
 return 'Has pasado los tests, felicidades.'
 }
@@ -55,6 +47,7 @@ return 'Has pasado los tests, felicidades.'
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
+		fnResult: '',
 		testFile: ``
 	},
 	3: {
@@ -67,6 +60,7 @@ return 'Has pasado los tests, felicidades.'
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
+		fnResult: '',
 		testFile: ``
 	},
 	4: {
@@ -79,6 +73,8 @@ return 'Has pasado los tests, felicidades.'
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
+		fnResult: '',
+
 		testFile: ``
 	},
 	5: {
@@ -91,6 +87,8 @@ return 'Has pasado los tests, felicidades.'
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
+		fnResult: '',
+
 		testFile: ``
 	},
 	6: {
@@ -103,6 +101,8 @@ return 'Has pasado los tests, felicidades.'
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
+		fnResult: '',
+
 		testFile: ``
 	},
 	7: {
@@ -115,6 +115,8 @@ return 'Has pasado los tests, felicidades.'
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
+		fnResult: '',
+
 		testFile: ``
 	},
 	8: {
@@ -127,6 +129,8 @@ return 'Has pasado los tests, felicidades.'
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
+		fnResult: '',
+
 		testFile: ``
 	},
 	9: {
@@ -139,6 +143,8 @@ return 'Has pasado los tests, felicidades.'
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
+		fnResult: '',
+
 		testFile: ``
 	},
 	10: {
@@ -151,6 +157,8 @@ return 'Has pasado los tests, felicidades.'
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
+		fnResult: '',
+
 		testFile: ``
 	},
 	11: {
@@ -163,6 +171,8 @@ return 'Has pasado los tests, felicidades.'
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
+		fnResult: '',
+
 		testFile: ``
 	},
 	12: {
@@ -175,6 +185,8 @@ return 'Has pasado los tests, felicidades.'
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
+		fnResult: '',
+
 		testFile: ``
 	},
 	13: {
@@ -187,6 +199,8 @@ return 'Has pasado los tests, felicidades.'
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
+		fnResult: '',
+
 		testFile: ``
 	},
 	14: {
@@ -199,6 +213,8 @@ return 'Has pasado los tests, felicidades.'
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
+		fnResult: '',
+
 		testFile: ``
 	},
 	15: {
@@ -211,6 +227,8 @@ return 'Has pasado los tests, felicidades.'
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
+		fnResult: '',
+
 		testFile: ``
 	}
 };

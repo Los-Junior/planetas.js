@@ -4,7 +4,6 @@
 	import '@fontsource/space-grotesk';
 	import { challengesObject } from '../data/challenges';
 	import clsx from 'clsx';
-	import { each } from 'svelte/internal';
 	import { features } from '../data/features';
 	const challenges = Object.values(challengesObject);
 </script>
@@ -21,9 +20,6 @@
 			</div>
 		</div>
 	</MainContainer>
-	<div class="absolute top-0">
-		<!-- <img src="/lunar-landscape.jpeg" alt="" /> -->
-	</div>
 </div>
 <div class="bg-brand-dark text-white py-20">
 	<div class="flex flex-col items-center space-y-6">
@@ -50,25 +46,27 @@
 
 	<h1 class="text-5xl text-white">Problemas a resolver</h1>
 	<div class="grid grid-cols-4 gap-10 py-20">
-		{#each challenges as challenge}
-			<div
-				class="h-96 bg-brand-dark-purple border border-brand-light-purple rounded p-4 text-white flex flex-col justify-between items-center"
-			>
-				<p class="text-center text-purple-300">
-					{challenge.name}
-				</p>
-				<img src={challenge.image} class="w-2/3" alt="" />
-				<p
-					class={clsx(
-						'px-2 py-1 rounded text-black',
-						challenge.difficulty === 'Fácil' && 'bg-emerald-400',
-						challenge.difficulty === 'Medio' && 'bg-orange-500',
-						challenge.difficulty === 'Difícil' && 'bg-red-500'
-					)}
+		{#each challenges as challenge (challenge.id)}
+			<a href={`/retos/${challenge.id}`}>
+				<div
+					class="h-96 bg-brand-dark-purple border border-brand-light-purple rounded p-4 text-white flex flex-col justify-between items-center"
 				>
-					{challenge.difficulty}
-				</p>
-			</div>
+					<p class="text-center text-purple-300">
+						{challenge.name}
+					</p>
+					<img src={challenge.image} class="w-2/3" alt="" />
+					<p
+						class={clsx(
+							'px-2 py-1 rounded text-black',
+							challenge.difficulty === 'Fácil' && 'bg-emerald-400',
+							challenge.difficulty === 'Medio' && 'bg-orange-500',
+							challenge.difficulty === 'Difícil' && 'bg-red-500'
+						)}
+					>
+						{challenge.difficulty}
+					</p>
+				</div>
+			</a>
 		{/each}
 	</div>
 </MainContainer>
