@@ -9,7 +9,6 @@ export const getHomeChallenges = async () => {
 	}
 
 	const challenges = await res.json();
-	console.log(challenges);
 	return challenges;
 };
 
