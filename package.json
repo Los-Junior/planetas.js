@@ -66,6 +66,7 @@
 		"svelte-icons": "^2.1.0",
 		"to-vfile": "^7.2.3",
 		"unified": "^10.1.2",
+		"vite-tsconfig-paths": "^4.0.3",
 		"vm2": "^3.9.13",
 		"xdm": "^3.4.0"
 	}

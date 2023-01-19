@@ -1,13 +1,12 @@
 <script lang="ts">
-	import { challengesObject } from '../../..//data/challenges';
-	import Navbar from '../../../components/challenges/Navbar.svelte';
-
 	/** @type {import('./$types').PageData} */
 	export let data: { id: string };
 
-	import Description from '../../../components/challenges/Description.svelte';
-	import MobileNavbar from '../../../components/challenges/MobileNavbar.svelte';
-	import Editor from '../../../components/challenges/Editor.svelte';
+	import { challengesObject } from '@/data/challenges';
+	import Navbar from '@/components/challenges/Navbar.svelte';
+	import Description from '@/components/challenges/Description.svelte';
+	import MobileNavbar from '@/components/challenges/MobileNavbar.svelte';
+	import Editor from '@/components/challenges/Editor.svelte';
 
 	const challenge = challengesObject[data.id];
 

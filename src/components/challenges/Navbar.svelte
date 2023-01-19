@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { DefaultChallenge, type Challenge } from '../../types';
-	import MainContainer from '../generics/MainContainer.svelte';
+	import { DefaultChallenge, type Challenge } from '@/types';
+	import MainContainer from '@/components/generics/MainContainer.svelte';
 	import IoLogoGithub from 'svelte-icons/io/IoLogoGithub.svelte';
 	import IoIosMenu from 'svelte-icons/io/IoIosMenu.svelte';
 	export let challenge: Challenge = DefaultChallenge;

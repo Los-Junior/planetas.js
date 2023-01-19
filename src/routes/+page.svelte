@@ -1,13 +1,11 @@
 <script lang="ts">
-	import MainContainer from '../components/generics/MainContainer.svelte';
-	import Navbar from '../components/home/Navbar.svelte';
+	import MainContainer from '@/components/generics/MainContainer.svelte';
+	import Navbar from '@/components/generics/Navbar.svelte';
 	import '@fontsource/space-grotesk';
-	import { challengesObject } from '../data/challenges';
+	import { challengesObject } from '@/data/challenges';
 	import clsx from 'clsx';
-	import { features } from '../data/features';
+	import { features } from '@/data/features';
 	const challenges = Object.values(challengesObject);
-	import { page } from '$app/stores';
-	console.log($page);
 </script>
 
 <div class="relative mainContainer">

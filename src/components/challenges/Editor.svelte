@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { DefaultChallenge, type Challenge } from '../..//types';
+	import { DefaultChallenge, type Challenge } from '@/types';
 	export let challenge: Challenge = DefaultChallenge;
 	import * as monaco from 'monaco-editor';
 	import { onMount } from 'svelte';

@@ -1,5 +1,5 @@
 <script>
-	import MainContainer from '../generics/MainContainer.svelte';
+	import MainContainer from './MainContainer.svelte';
 </script>
 
 <div class="flex justify-between items-center text-white py-6">

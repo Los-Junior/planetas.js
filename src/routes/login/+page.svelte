@@ -1,7 +1,6 @@
 <script>
 	import { signIn, signOut } from '@auth/sveltekit/client';
 	import { page } from '$app/stores';
-	console.log($page);
 </script>
 
 <h1>SvelteKit Auth Example</h1>

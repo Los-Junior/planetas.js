@@ -1,5 +1,5 @@
 import { NodeVM } from 'vm2';
-import { challengesObject } from '../../../data/challenges';
+import { challengesObject } from '@/data/challenges';
 import type { RequestHandler } from './$types';
 
 export const POST = (async ({ request, params }) => {
