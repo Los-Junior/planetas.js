@@ -8,15 +8,27 @@
 	import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
 	import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
 	import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
+	import type { Session } from '@/types/authjs';
 
 	export let user = true;
+	export let challengeId = '';
+	export let session: Session | undefined = undefined;
 	let userAnswer = challenge.initialCode;
+
+	const { fnInput, fnResult, testFile } = challenge;
 
 	const submitCode = async () => {
 		const res = await fetch(`/api/test`, {
 			method: 'POST',
 			headers: { 'content-type': 'application/json' },
-			body: JSON.stringify({ userAnswer, challengeId: 1 })
+			body: JSON.stringify({
+				userAnswer,
+				fnInput,
+				fnResult,
+				testFile,
+				userId: session?.user.id,
+				challengeId
+			})
 		});
 		const { message } = await res.json();
 		if (!res.ok) {

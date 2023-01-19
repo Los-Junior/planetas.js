@@ -9,6 +9,7 @@ export interface ChallengeI {
 	testFile: string;
 	fnResult: string;
 	fnInput: any;
+	isHomePage?: boolean;
 }
 
 export const DefaultChallenge: ChallengeI = {
@@ -21,5 +22,6 @@ export const DefaultChallenge: ChallengeI = {
 	testFile: '',
 	language: '',
 	fnInput: '',
-	fnResult: ''
+	fnResult: '',
+	isHomePage: false
 };

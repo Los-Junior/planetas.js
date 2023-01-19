@@ -5,7 +5,10 @@ const completedSchema = new Schema({
 		type: mongoose.Types.ObjectId,
 		ref: 'User'
 	},
-	challengeId: {
-		type: String
+	challenge: {
+		type: mongoose.Types.ObjectId,
+		ref: 'Challenge'
 	}
 });
+
+export const CompletedChallenge = mongoose.models.Completed || model('Completed', completedSchema);

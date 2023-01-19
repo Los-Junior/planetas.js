@@ -1,16 +1,17 @@
 import { NodeVM } from 'vm2';
 import { challengesObject } from '@/data/challenges';
 import type { RequestHandler } from './$types';
+import dbConnect from '@/config/dbConnect';
+import { CompletedChallenge } from '@/models/challenges';
 
 export const POST = (async ({ request, params }) => {
-	const { userAnswer, challengeId } = await request.json();
-	const challenge = challengesObject[challengeId];
-	const fnInput = JSON.parse(challenge.fnInput);
-	const expectedResult = JSON.parse(challenge.fnResult);
+	const { userAnswer, challengeId, fnInput, fnResult, testFile, userId } = await request.json();
+	const parsedFnInput = JSON.parse(fnInput);
+	const parsedExpectedOutput = JSON.parse(fnResult);
 
 	const vm = new NodeVM({ console: 'inherit', sandbox: {} });
 	const fn = vm.run(userAnswer, 'vm.js');
-	const output = await fn(fnInput);
+	const output = await fn(parsedFnInput);
 
 	const testVM = new NodeVM({
 		require: {
@@ -21,10 +22,16 @@ export const POST = (async ({ request, params }) => {
 		},
 		console: 'inherit'
 	});
-	const testFn = testVM.run(challenge.testFile, 'vm.js');
+
+	const testFn = testVM.run(testFile, 'vm.js');
+
 	try {
-		const testOutput = testFn(expectedResult, output);
+		const testOutput = testFn(parsedExpectedOutput, output);
 		// TODO: Agregar reto a lista de retos completados del usuario.
+		// TODO: Usar el challengeId
+		await dbConnect();
+		await CompletedChallenge.create({ user: userId, challenge: challengeId });
+
 		return new Response(JSON.stringify({ message: testOutput }), { status: 200 });
 	} catch (error: any) {
 		console.log(error);
