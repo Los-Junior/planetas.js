@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { DefaultChallenge, type Challenge } from '@/types';
-	export let challenge: Challenge = DefaultChallenge;
+	import { DefaultChallenge, type ChallengeI } from '@/types';
+	export let challenge: ChallengeI = DefaultChallenge;
 	import * as monaco from 'monaco-editor';
 	import { onMount } from 'svelte';
 	import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';

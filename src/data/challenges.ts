@@ -1,6 +1,6 @@
-import type { Challenge } from '@/types';
+import type { ChallengeI } from '@/types';
 
-export const challengesObject: { [key: string]: Challenge } = {
+export const challengesObject: { [key: string]: ChallengeI } = {
 	1: {
 		id: 1,
 		image: '/challenges/planet-01.png',
@@ -8,7 +8,7 @@ export const challengesObject: { [key: string]: Challenge } = {
 		name: 'Reto #1: ¡Automatizando envolver regalos de navidad!',
 		description:
 			"Este año los elfos han comprado una máquina que envuelve regalos. Pero… ¡no viene programada! Necesitamos crear un algoritmo que le ayude en la tarea. A la máquina se le pasa un array con los regalos. Cada regalo es un string. Necesitamos que la máquina envuelva cada regalo en papel de regalo y lo coloque en un array de regalos envueltos. El papel de regalo es el símbolo * y para envolver un regalo se coloca el símbolo * de forma que rodee totalmente al string por todos los lados. Por ejemplo: \n ```js \n const gifts = ['cat', 'game', 'socks']  \n ``` \n Como ves, el papel de regalo envuelve el string. Por arriba y por abajo, para no dejar ningún hueco, las esquinas también están cubiertas por el papel de regalo. Nota: El carácter \n representa un salto de línea. ¡Ojo! Asegúrate que pones el número correcto de * para envolver completamente el string. Pero no demasiados. Sólo los necesarios para cubrir el string. Ah, y no modifiques (mutes) el array original.",
-		solution: 1,
+
 		initialCode: `module.exports = function wrapping(gifts) {
 	return []
 }`,
@@ -43,7 +43,7 @@ return 'Has pasado los tests, felicidades.'
 		difficulty: 'Medio',
 		name: 'Reto #2: ¡Navegando por la Vía Láctea: un desafío de mapas estelares!',
 		description: '',
-		solution: 1,
+
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
@@ -56,7 +56,7 @@ return 'Has pasado los tests, felicidades.'
 		difficulty: 'Difícil',
 		name: 'Reto #3: Detección de objetos en órbita: uso de IA para rastrear satélites',
 		description: '',
-		solution: 1,
+
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
@@ -69,7 +69,7 @@ return 'Has pasado los tests, felicidades.'
 		difficulty: 'Medio',
 		name: 'Reto #4: Construyendo un módulo de aterrizaje lunar: un problema de programación basado en la física',
 		description: '',
-		solution: 1,
+
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
@@ -83,7 +83,7 @@ return 'Has pasado los tests, felicidades.'
 		difficulty: 'Fácil',
 		name: 'Reto #5: Comunicaciones interestelares: codificación y decodificación de mensajes',
 		description: '',
-		solution: 1,
+
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
@@ -97,7 +97,7 @@ return 'Has pasado los tests, felicidades.'
 		difficulty: 'Difícil',
 		name: 'Reto #6: Minería de asteroides: optimización de la extracción de recursos',
 		description: '',
-		solution: 1,
+
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
@@ -111,7 +111,7 @@ return 'Has pasado los tests, felicidades.'
 		difficulty: 'Difícil',
 		name: 'Reto #7: La búsqueda de inteligencia extraterrestre: un desafío de análisis de datos',
 		description: '',
-		solution: 1,
+
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
@@ -125,7 +125,7 @@ return 'Has pasado los tests, felicidades.'
 		difficulty: 'Fácil',
 		name: 'Reto #8: Limpieza de desechos espaciales: simulación de una misión robótica',
 		description: '',
-		solution: 1,
+
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
@@ -139,7 +139,7 @@ return 'Has pasado los tests, felicidades.'
 		difficulty: 'Difícil',
 		name: 'Reto #9: Diseño de un Mars Rover: un problema de programación de ingeniería',
 		description: '',
-		solution: 1,
+
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
@@ -153,7 +153,7 @@ return 'Has pasado los tests, felicidades.'
 		difficulty: 'Medio',
 		name: 'Reto #10: Predicción de erupciones solares: un desafío de aprendizaje automático',
 		description: '',
-		solution: 1,
+
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
@@ -167,7 +167,7 @@ return 'Has pasado los tests, felicidades.'
 		difficulty: 'Fácil',
 		name: 'Reto #11: Probe Autonomy: programación de una misión de exploración del espacio profundo',
 		description: '',
-		solution: 1,
+
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
@@ -181,7 +181,7 @@ return 'Has pasado los tests, felicidades.'
 		difficulty: 'Medio',
 		name: 'Reto #12: La carrera hacia el planeta rojo: un juego de estrategia en tiempo real',
 		description: '',
-		solution: 1,
+
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
@@ -195,7 +195,7 @@ return 'Has pasado los tests, felicidades.'
 		difficulty: 'Difícil',
 		name: 'Reto #13: Mapeando el Universo: Un Problema de Programación de Gráficos 3D',
 		description: '',
-		solution: 1,
+
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
@@ -209,7 +209,7 @@ return 'Has pasado los tests, felicidades.'
 		difficulty: 'Fácil',
 		name: 'Reto #14: Descubrimiento de exoplanetas: un desafío de ciencia de datos',
 		description: '',
-		solution: 1,
+
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,
@@ -223,7 +223,7 @@ return 'Has pasado los tests, felicidades.'
 		difficulty: 'Difícil',
 		name: 'Reto #15: Mantenimiento de la estación espacial: un problema de programación de robótica',
 		description: '',
-		solution: 1,
+
 		initialCode: ``,
 		language: 'javascript',
 		fnInput: ``,

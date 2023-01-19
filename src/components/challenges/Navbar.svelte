@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { DefaultChallenge, type Challenge } from '@/types';
+	import { DefaultChallenge, type ChallengeI } from '@/types';
 	import MainContainer from '@/components/generics/MainContainer.svelte';
 	import IoLogoGithub from 'svelte-icons/io/IoLogoGithub.svelte';
 	import IoIosMenu from 'svelte-icons/io/IoIosMenu.svelte';
-	export let challenge: Challenge = DefaultChallenge;
+	export let challenge: ChallengeI = DefaultChallenge;
 
 	export let openNavbar = (val: boolean) => {};
 	export let isSidebarOpen = false;
