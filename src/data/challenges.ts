@@ -29,7 +29,7 @@ try {
 try {
 	expect(output).to.eql(result)
 } catch (err) {
-	throw 'Respuesta inválida'
+	throw \`Respuesta inválida. Se obtuvo \${JSON.stringify(output)}, y se espera \${JSON.stringify(result)} \`
 }
 
 

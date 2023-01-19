@@ -6,6 +6,8 @@
 	import clsx from 'clsx';
 	import { features } from '../data/features';
 	const challenges = Object.values(challengesObject);
+	import { page } from '$app/stores';
+	console.log($page);
 </script>
 
 <div class="relative mainContainer">
