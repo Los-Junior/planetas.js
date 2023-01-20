@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { signOut } from '@auth/sveltekit/client';
 	const user = $page.data.session?.user;
 	let isUserMenuOpen = false;
 </script>
@@ -15,25 +16,33 @@
 		/>
 	{/if}
 	<div class="relative">
-		<button
-			on:click={() => {
-				isUserMenuOpen = !isUserMenuOpen;
-			}}
-		>
-			<img class="w-6 h-6 border border-brand-dark-purple rounded-full" src={user.image} alt="" />
-		</button>
+		<div class="flex items-center">
+			<button
+				class=""
+				on:click={() => {
+					isUserMenuOpen = !isUserMenuOpen;
+				}}
+			>
+				<img class="w-6 h-6 border border-brand-dark-purple rounded-full" src={user.image} alt="" />
+			</button>
+		</div>
 
 		{#if isUserMenuOpen}
 			<div
-				class="absolute z-40 right-0 origin-top-right w-40 bg-brand-dark-purple border border-brand-light-purple rounded flex flex-col space-y-2 p-2"
+				class="absolute z-40 top-10 right-0 origin-top-right w-40 bg-brand-dark-purple border border-brand-light-purple rounded flex flex-col space-y-2 p-2"
 			>
 				<a href="/dashboard">Dashboard</a>
 				<a href="/dashboard/settings">Configuración</a>
 				<div class="w-full border-t border-brand-light-purple " />
-				<a href="/logout">Logout</a>
+				<p on:keydown on:click={() => signOut()}>Logout</p>
 			</div>
 		{/if}
 	</div>
 {:else}
-	<button>Registrarme</button>
+	<a href="/login">
+		<button
+			class="px-3 py-1 bg-brand-dark-purple border border-brand-light-purple tex-twhite rounded"
+			>Registrarme</button
+		>
+	</a>
 {/if}
