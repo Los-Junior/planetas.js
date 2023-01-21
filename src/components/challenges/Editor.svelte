@@ -13,6 +13,8 @@
 	export let user = true;
 	export let challengeId = '';
 	export let session: Session | undefined = undefined;
+
+	let el: HTMLDivElement;
 	let userAnswer = challenge.initialCode;
 
 	const { fnInput, fnResult, testFile } = challenge;
@@ -42,10 +44,7 @@
 	const handleEditorChange = (e: any) => {
 		userAnswer = e.target.value;
 		localStorage.setItem(`@reto${challenge.id}`, e.target.value);
-		console.log(e.target.value);
 	};
-
-	let el: HTMLDivElement;
 
 	onMount(() => {
 		self.MonacoEnvironment = {

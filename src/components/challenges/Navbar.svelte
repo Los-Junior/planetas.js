@@ -12,7 +12,7 @@
 <MainContainer className="relative border-b border-brand-light-purple">
 	<div class="flex justify-between items-center bg-brand-dark text-white py-6">
 		<div class="flex space-x-8">
-			<a href="/">
+			<a href={`/`}>
 				<div class="flex space-x-2 items-center">
 					<img
 						src={'/advent-logo.png'}

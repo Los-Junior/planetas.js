@@ -3,10 +3,8 @@
 	import remarkParse from 'remark-parse';
 	import remarkHtml from 'remark-html';
 	import 'highlight.js/styles/github-dark-dimmed.css';
-	import rehypeFormat from 'rehype-format';
 	import { rehype } from 'rehype';
 	import rehypePrism from 'rehype-highlight';
-	import { onMount } from 'svelte';
 	// @ts-ignore
 	import addClasses from 'rehype-add-classes';
 	import javascript from 'highlight.js/lib/languages/javascript';
@@ -26,11 +24,6 @@
 	};
 
 	let html = handleHtml();
-
-	onMount(() => {
-		const codeTags = document.getElementsByTagName('code');
-		console.log(codeTags.item(0));
-	});
 </script>
 
 <div class="relative max-h-[80vh] overflow-scroll w-[40%] text-white">

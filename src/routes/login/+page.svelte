@@ -1,4 +1,5 @@
 <script>
+	import { base } from '$app/paths';
 	import { signIn } from '@auth/sveltekit/client';
 </script>
 

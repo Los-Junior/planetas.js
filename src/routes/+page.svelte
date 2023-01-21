@@ -1,7 +1,6 @@
 <script lang="ts">
 	import MainContainer from '@/components/generics/MainContainer.svelte';
 	import Navbar from '@/components/generics/Navbar.svelte';
-	import '@fontsource/space-grotesk';
 	import clsx from 'clsx';
 	import { features } from '@/data/features';
 	import { getHomeChallenges } from '@/services/client/challenges';
@@ -9,15 +8,17 @@
 	const challenges = getHomeChallenges();
 </script>
 
-<div class="relative mainContainer">
+<div class="relative">
 	<MainContainer>
 		<Navbar />
 		<div class="bg-brand-dark text-white flex py-6">
 			<div class="flex-1 space-y-6 pt-20 pb-40 z-10">
-				<h1 class="w-1/3 text-5xl font-extrabold">Conquista la luna con Javascript! 🌔</h1>
-				<p class="text-xl">
-					Eleva tus skills de programación con Javascript, resolviendo divertidos problemas.
-				</p>
+				<h1 class="w-2/3 text-5xl font-extrabold">Conquista la galaxia con Javascript! 🚀🌔</h1>
+				<p class="text-xl">Eleva tus skills de programación resolviendo divertidos problemas.</p>
+				<div class="flex space-x-4">
+					<a href={`#retos`} class="text-sm hover:underline">Retos</a>
+					<a href={`#retos`} class="text-sm hover:underline">Crear retos</a>
+				</div>
 			</div>
 		</div>
 	</MainContainer>
@@ -45,7 +46,7 @@
 		</div>
 	</div>
 
-	<h1 class="text-5xl text-white">Problemas a resolver</h1>
+	<h1 id="retos" class="text-5xl text-white">Problemas a resolver</h1>
 	<div class="grid grid-cols-4 gap-10 py-20">
 		{#await challenges}
 			<p>Cargando Retos!</p>
@@ -75,9 +76,3 @@
 		{/await}
 	</div>
 </MainContainer>
-
-<style>
-	.mainContainer {
-		font-family: 'Space Grotesk';
-	}
-</style>

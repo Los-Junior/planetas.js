@@ -15,7 +15,7 @@
 			}}
 		/>
 	{/if}
-	<div class="relative">
+	<div class="relative ">
 		<div class="flex items-center">
 			<button
 				class=""
@@ -29,17 +29,17 @@
 
 		{#if isUserMenuOpen}
 			<div
-				class="absolute z-40 top-10 right-0 origin-top-right w-40 bg-brand-dark-purple border border-brand-light-purple rounded flex flex-col space-y-2 p-2"
+				class="absolute text-white z-40 top-10 right-0 origin-top-right w-40 bg-brand-dark-purple border border-brand-light-purple rounded flex flex-col space-y-2 p-2"
 			>
-				<a href="/dashboard">Dashboard</a>
-				<a href="/dashboard/settings">Configuración</a>
+				<a href={`/dashboard`}>Dashboard</a>
+				<a href={`/dashboard/settings`}>Configuración</a>
 				<div class="w-full border-t border-brand-light-purple " />
 				<p on:keydown on:click={() => signOut()}>Logout</p>
 			</div>
 		{/if}
 	</div>
 {:else}
-	<a href="/login">
+	<a href={`/login`}>
 		<button
 			class="px-3 py-1 bg-brand-dark-purple border border-brand-light-purple tex-twhite rounded"
 			>Registrarme</button

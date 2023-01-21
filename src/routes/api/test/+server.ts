@@ -4,7 +4,7 @@ import type { RequestHandler } from './$types';
 import dbConnect from '@/config/dbConnect';
 import { CompletedChallenge } from '@/models/challenges';
 
-export const POST = (async ({ request, params }) => {
+export const POST = (async ({ request, params, locals }) => {
 	const { userAnswer, challengeId, fnInput, fnResult, testFile, userId } = await request.json();
 	const parsedFnInput = JSON.parse(fnInput);
 	const parsedExpectedOutput = JSON.parse(fnResult);
@@ -34,7 +34,6 @@ export const POST = (async ({ request, params }) => {
 
 		return new Response(JSON.stringify({ message: testOutput }), { status: 200 });
 	} catch (error: any) {
-		console.log(error);
 		return new Response(JSON.stringify({ message: error }), { status: 400 });
 	}
 }) satisfies RequestHandler;

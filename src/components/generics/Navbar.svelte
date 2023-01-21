@@ -6,7 +6,7 @@
 
 <div class="flex justify-between items-center text-white py-6">
 	<div class="flex space-x-8 z-10">
-		<a href="/">
+		<a href={`/`}>
 			<div class="flex space-x-2 items-center">
 				<img
 					src={'/advent-logo.png'}
@@ -19,8 +19,8 @@
 	</div>
 
 	<div class="flex space-x-6 items-center">
-		<a class="text-lg text-zinc-300 hover:text-zinc-200" href="/retos">Retos</a>
-		<a class="text-lg text-zinc-300 hover:text-zinc-200" href="/docs">Docs</a>
+		<a class="text-lg text-zinc-300 hover:text-zinc-200" href={`/retos`}>Retos</a>
+		<a class="text-lg text-zinc-300 hover:text-zinc-200" href={`/docs`}>Docs</a>
 		<a
 			href="https://discord.gg/BvNsjCeQ"
 			target="_blank"
