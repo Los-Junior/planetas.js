@@ -13,11 +13,13 @@
 		<Navbar />
 		<div class="bg-brand-dark text-white flex py-6">
 			<div class="flex-1 space-y-6 pt-20 pb-40 z-10">
-				<h1 class="w-2/3 text-5xl font-extrabold">Conquista la galaxia con Javascript! 🚀🌔</h1>
+				<h1 class="w-2/3 text-5xl font-extrabold leading-tight">
+					Conquista la galaxia con Javascript! 🚀🌔
+				</h1>
 				<p class="text-xl">Eleva tus skills de programación resolviendo divertidos problemas.</p>
 				<div class="flex space-x-4">
 					<a href={`#retos`} class="text-sm hover:underline">Retos</a>
-					<a href={`#retos`} class="text-sm hover:underline">Crear retos</a>
+					<a href={`/retos/nuevo`} class="text-sm hover:underline">Crear retos</a>
 				</div>
 			</div>
 		</div>
@@ -25,6 +27,15 @@
 </div>
 <div class="bg-brand-dark text-white py-20">
 	<div class="flex flex-col items-center space-y-6">
+		<div class="text-emerald-300 text-sm flex space-x-2 items-center">
+			<p>Trabajas con Next.js? Administra las rutas de API con</p>
+			<a href="https://github.com/lifespikes/apext" target="_blank" rel="noopener noreferrer">
+				<button
+					class="py-0.5 px-2 bg-brand-dark-purple text-white rounded border border-brand-light-purple"
+					>APEXT</button
+				>
+			</a>
+		</div>
 		<h1 class="text-5xl">Un proyecto auspiciado por</h1>
 		<a class="w-1/5" href="https://losjunior.co" target="_blank" rel="noreferrer noopener">
 			<img src="/lj-logo.png" alt="" />

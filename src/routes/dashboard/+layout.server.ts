@@ -67,13 +67,11 @@ const createCards = (platformCount: number, communityCount: number, createdCount
 		},
 		{
 			id: 4,
-			count: createdCount,
-			title: 'Retos creados',
-			description: `He creado ${createdCount} reto${
-				createdCount === 1 ? '' : 's'
-			} en la plataforma.`,
-			href: `/retos/crear`,
-			cta: 'Crear reto'
+			count: 0,
+			title: 'Únete a Los Junior',
+			description: `Únete a la comunidad y avancemos juntos.`,
+			href: `https://losjunior.co/`,
+			cta: 'Unirme'
 		}
 	];
 };

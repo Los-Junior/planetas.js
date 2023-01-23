@@ -1,27 +1,33 @@
 export interface ChallengeI {
-	id: number;
+	_id?: string;
 	name: string;
 	difficulty: string;
-	image: string;
+	image?: string;
 	description: string;
-	initialCode: string;
+	initialFunction: string;
+	functionArguments: any[];
 	language: string;
 	testFile: string;
 	fnResult: string;
-	fnInput: any;
 	isHomePage?: boolean;
+	order?: number;
 }
 
 export const DefaultChallenge: ChallengeI = {
 	name: '',
-	id: 0,
 	image: '',
 	difficulty: '',
 	description: '',
-	initialCode: '',
+	functionArguments: [],
+	initialFunction: '',
 	testFile: '',
 	language: '',
-	fnInput: '',
 	fnResult: '',
 	isHomePage: false
 };
+
+export enum ChallengeDifficulties {
+	EASY = 'Fácil',
+	MEDIUM = 'Medio',
+	HARD = 'Difícil'
+}

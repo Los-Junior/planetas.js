@@ -33,8 +33,9 @@
 			>
 				<a href={`/dashboard`}>Dashboard</a>
 				<a href={`/dashboard/settings`}>Configuración</a>
+				<a href={`/retos/nuevo`}>Crear Reto</a>
 				<div class="w-full border-t border-brand-light-purple " />
-				<p on:keydown on:click={() => signOut()}>Logout</p>
+				<button class="w-min" on:click={() => signOut()}>Logout</button>
 			</div>
 		{/if}
 	</div>

@@ -23,7 +23,7 @@
 	{#await challenge}
 		<div>cargando</div>
 	{:then challenge}
-		<Navbar {openNavbar} {isSidebarOpen} {challenge} />
+		<!-- <Navbar {openNavbar} {isSidebarOpen} {challenge} /> -->
 		<MobileNavbar {openNavbar} isOpen={isSidebarOpen} />
 		<div class="flex pt-6">
 			<Editor challengeId={id} {challenge} {session} />
