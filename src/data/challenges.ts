@@ -17,5 +17,9 @@ module.exports = function tests(respuestaDelUsuario) {
 }`,
 	initialFunction: `module.exports = function miReto(miArgumento) {
 	return []
-}`
+}`,
+	functionArguments: [
+		'primerArgumentoTipoString',
+		['segundo', 'argumento', 'tipo', 'ArrayDeStrings']
+	]
 };

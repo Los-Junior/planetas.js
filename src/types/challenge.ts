@@ -26,8 +26,16 @@ export const DefaultChallenge: ChallengeI = {
 	isHomePage: false
 };
 
-export enum ChallengeDifficulties {
-	EASY = 'Fácil',
-	MEDIUM = 'Medio',
-	HARD = 'Difícil'
+export const ChallengeDifficulties = {
+	EASY: 'Fácil',
+	MEDIUM: 'Medio',
+	HARD: 'Difícil'
+};
+
+export enum ArrayTypes {
+	string = 'strings',
+	number = 'números',
+	boolean = 'booleanos',
+	object = 'objetos',
+	array = 'arreglos'
 }

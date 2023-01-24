@@ -1,15 +1,25 @@
 <script lang="ts">
-	import Argument from '@/components/challenges/new/Argument.svelte';
+	import DifficultyRadios from '@/components/challenges/new/DifficultyRadios.svelte';
 	import GenericEditor from '@/components/challenges/new/GenericEditor.svelte';
 	import InputContainer from '@/components/challenges/new/InputContainer.svelte';
-	import NewArrayArg from '@/components/challenges/new/NewArrayArg.svelte';
-	import NewNumberArg from '@/components/challenges/new/NewNumberArg.svelte';
-	import NewObjectArg from '@/components/challenges/new/NewObjectArg.svelte';
-	import NewStringArg from '@/components/challenges/new/NewStringArg.svelte';
 	import { newChallengeDefaults } from '@/data/challenges';
 
 	import { argumentsStore } from '@/stores/newChallenge';
 	import { ChallengeDifficulties, type ChallengeI } from '@/types';
+
+	let difficulty = 'Fácil';
+
+	let challenge: ChallengeI = {
+		name: '',
+		description: '',
+		initialFunction: newChallengeDefaults.initialFunction,
+		functionArguments: newChallengeDefaults.functionArguments,
+		testFile: newChallengeDefaults.testFile,
+		difficulty,
+		fnResult: '',
+		language: 'javascript',
+		isHomePage: false
+	};
 
 	const handleDesc = (e: CustomEvent) => {
 		challenge.description = e.detail;
@@ -20,23 +30,16 @@
 	};
 
 	const handleTestFile = (e: CustomEvent) => {
-		console.log(e.detail);
 		challenge.testFile = e.detail;
 	};
 
-	let challenge: ChallengeI = {
-		name: '',
-		description: '',
-		initialFunction: newChallengeDefaults.initialFunction,
-		functionArguments: [],
-		testFile: newChallengeDefaults.testFile,
-		difficulty: ChallengeDifficulties.EASY,
-		fnResult: '',
-		language: 'javascript',
-		isHomePage: false
+	const handleArguments = (e: CustomEvent) => {
+		challenge.functionArguments = JSON.parse(e.detail);
 	};
 
 	argumentsStore.subscribe((args) => (challenge.functionArguments = args));
+
+	$: challenge.difficulty = difficulty;
 
 	$: console.log(challenge);
 </script>
@@ -45,6 +48,7 @@
 	<h1 class="text-4xl">Crear nuevo reto</h1>
 	<p>Crea tus propios retos y compártelos con tus amigos a ver si son capaces de resolverlos.</p>
 	<div class="separator divide-y divide-brand-dark-purple">
+		<!-- NAME INPUT -->
 		<InputContainer>
 			<div class="w-1/4">
 				<h3 class="text-xl">Nombre</h3>
@@ -56,6 +60,8 @@
 				bind:value={challenge.name}
 			/>
 		</InputContainer>
+
+		<!-- DESCRIPTION INPUT -->
 		<InputContainer>
 			<div class="w-1/4 space-y-2">
 				<h3 class="text-xl">Descripción</h3>
@@ -68,6 +74,50 @@
 				<GenericEditor className="flex-1 h-96" language="markdown" on:change={handleDesc} />
 			</div>
 		</InputContainer>
+
+		<!-- DIFFICULTY INPUT -->
+		<InputContainer>
+			<div class="w-1/4">
+				<h3 class="text-xl">Dificultad</h3>
+				<p class="font-light text-xs">Selecciona la dificultad de tu reto.</p>
+			</div>
+
+			<div class="flex-1 flex space-x-2 items-center">
+				<input
+					bind:group={difficulty}
+					name="difficulty"
+					checked={difficulty === ChallengeDifficulties.EASY}
+					type="radio"
+					class="w-6 h-6 px-2 bg-brand-dark border border-brand-light-purple"
+					value={ChallengeDifficulties.EASY}
+				/>
+				<p>Fácil</p>
+			</div>
+			<div class="flex-1 flex space-x-2 items-center">
+				<input
+					bind:group={difficulty}
+					name="difficulty"
+					type="radio"
+					checked={difficulty === ChallengeDifficulties.MEDIUM}
+					class="w-6 h-6 px-2 bg-brand-dark border border-brand-light-purple"
+					value={ChallengeDifficulties.MEDIUM}
+				/>
+				<p>Medio</p>
+			</div>
+			<div class="flex-1 flex space-x-2 items-center">
+				<input
+					bind:group={difficulty}
+					name="difficulty"
+					type="radio"
+					checked={difficulty === ChallengeDifficulties.HARD}
+					class="w-6 h-6 px-2 bg-brand-dark border border-brand-light-purple"
+					value={ChallengeDifficulties.HARD}
+				/>
+				<p>Difícil</p>
+			</div>
+		</InputContainer>
+
+		<!-- INITIAL FUNCTION INPUT -->
 		<InputContainer>
 			<div class="w-1/4 space-y-2">
 				<h3 class="text-xl">Función inicial</h3>
@@ -94,33 +144,22 @@
 		<InputContainer>
 			<div class="w-1/4 space-y-2">
 				<h3 class="text-xl">Argumentos de la función</h3>
-				<p class="font-light text-xs">Cuántos y cuáles argumentos tiene tu función inicial.</p>
 				<p class="font-light text-xs">
-					Agrega tantos argumentos como quieras, pero recuerda que el usuario debe resolver tu reto
-					con la función inicial que has definido.
+					Cuántos y cuáles argumentos tiene tu función inicial. Si es la primera vez que creas un
+					array de argumentos, revisa los docs.
 				</p>
+
 				<p class="font-light text-xs">
-					Los argumentos serán ingresados en tu función inicial en el mismo orden que los definas
-					aquí.
+					Debes escribirlos en formato <span class="text-normal underline">JSON</span>.
 				</p>
 			</div>
-			<div class="space-y-2 divide-y flex-1 divide-brand-dark-purple">
-				<div class="flex">
-					<NewStringArg />
-					<NewArrayArg />
-					<NewObjectArg />
-					<NewNumberArg />
-				</div>
-				<div class="py-1">
-					{#each challenge.functionArguments as arg, i}
-						<Argument
-							{arg}
-							on:delete={() => {
-								challenge.functionArguments.splice(i, 1);
-							}}
-						/>
-					{/each}
-				</div>
+			<div class="p-1 flex-1 rounded border border-brand-light-purple">
+				<GenericEditor
+					className="flex-1 h-40"
+					language="json"
+					on:change={handleArguments}
+					defaultValue={`[ "primerArgumentoTipoString", ["segundo", "argumento", "tipo", "ArrayDeStrings"] ]`}
+				/>
 			</div>
 		</InputContainer>
 		<InputContainer>
