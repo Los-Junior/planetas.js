@@ -3,6 +3,7 @@
 	import GenericEditor from '@/components/challenges/new/GenericEditor.svelte';
 	import InputContainer from '@/components/challenges/new/InputContainer.svelte';
 	import { newChallengeDefaults } from '@/data/challenges';
+	import { createChallenge } from '@/services/client/challenges';
 
 	import { argumentsStore } from '@/stores/newChallenge';
 	import { ChallengeDifficulties, type ChallengeI } from '@/types';
@@ -186,6 +187,13 @@
 	</div>
 	<button
 		class="py-2 px-4 bg-brand-dark-purple rounded"
-		on:click={() => alert(JSON.stringify(challenge, null, 2))}>Guardar</button
+		on:click={async () => {
+			try {
+				const body = await createChallenge(challenge);
+				console.log('body', body);
+			} catch (error) {
+				console.log(error);
+			}
+		}}>Guardar</button
 	>
 </div>
