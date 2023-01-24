@@ -40,8 +40,6 @@
 	argumentsStore.subscribe((args) => (challenge.functionArguments = args));
 
 	$: challenge.difficulty = difficulty;
-
-	$: console.log(challenge);
 </script>
 
 <div class="text-white ">
