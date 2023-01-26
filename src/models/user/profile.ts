@@ -1,5 +1,5 @@
 import type { Profile, User } from '@auth/core/types';
-import { Schema, models, model, Model, Document } from 'mongoose';
+import mongoose, { Schema, model, Model, Document } from 'mongoose';
 import { Personal, type UserPersonalInfoI } from './personal';
 
 interface UserProfileI {
@@ -40,5 +40,5 @@ profileSchema.static('updateLastSeen', async function (userId) {
 });
 
 export const UserProfile =
-	(models.UserProfile as ProfileModelI) ||
+	(mongoose.models.UserProfile as ProfileModelI) ||
 	model<UserProfileI, ProfileModelI>('UserProfile', profileSchema);

@@ -1,4 +1,4 @@
-import mongoose, { Schema, models, model } from 'mongoose';
+import mongoose, { Schema, model } from 'mongoose';
 
 const CreatedSchema = new Schema(
 	{
@@ -16,4 +16,5 @@ const CreatedSchema = new Schema(
 	{ timestamps: true }
 );
 
-export const CreatedChallenge = models.CreatedChallenge || model('CreatedChallenge', CreatedSchema);
+export const CreatedChallenge =
+	mongoose.models.CreatedChallenge || model('CreatedChallenge', CreatedSchema);

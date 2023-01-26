@@ -4,7 +4,7 @@
 	import FaGithub from 'svelte-icons/fa/FaGithub.svelte';
 </script>
 
-<div class="flex justify-between items-center text-white py-6">
+<div class="flex justify-between items-center text-white h-[10vh]">
 	<div class="flex space-x-8 z-10">
 		<a href={`/`}>
 			<div class="flex space-x-2 items-center">
