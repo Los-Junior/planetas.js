@@ -13,7 +13,7 @@
 					alt="Logo de Advent of Juniors - Resuelve problemas de programación"
 					class="w-6 h-6"
 				/>
-				<p class="text-xs">Advent of Juniors</p>
+				<p class="text-xs">Planet.js</p>
 			</div>
 		</a>
 	</div>
