@@ -1,6 +1,6 @@
-import mongoose, { Schema, model } from 'mongoose';
+import mongoose from 'mongoose';
 
-const challengeSchema = new Schema(
+const challengeSchema = new mongoose.Schema(
 	{
 		name: String,
 		description: String,
@@ -18,4 +18,4 @@ const challengeSchema = new Schema(
 	{ timestamps: true }
 );
 
-export const Challenge = mongoose.models.Challenge || model('Challenge', challengeSchema);
+export const Challenge = mongoose.models.Challenge || mongoose.model('Challenge', challengeSchema);

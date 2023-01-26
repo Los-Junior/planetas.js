@@ -1,8 +1,8 @@
-import mongoose, { Schema, model } from 'mongoose';
+import mongoose from 'mongoose';
 
-const LastSeenSchema = new Schema({
+const LastSeenSchema = new mongoose.Schema({
 	user: {
-		type: Schema.Types.ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',
 		required: true
 	},
@@ -12,4 +12,4 @@ const LastSeenSchema = new Schema({
 	}
 });
 
-export const UserLastSeen = mongoose.models.LastSeen || model('LastSeen', LastSeenSchema);
+export const UserLastSeen = mongoose.models.LastSeen || mongoose.model('LastSeen', LastSeenSchema);

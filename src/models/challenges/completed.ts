@@ -1,6 +1,6 @@
-import mongoose, { Schema, model } from 'mongoose';
+import mongoose from 'mongoose';
 
-const completedSchema = new Schema({
+const completedSchema = new mongoose.Schema({
 	user: {
 		type: mongoose.Types.ObjectId,
 		ref: 'User'
@@ -11,4 +11,5 @@ const completedSchema = new Schema({
 	}
 });
 
-export const CompletedChallenge = mongoose.models.Completed || model('Completed', completedSchema);
+export const CompletedChallenge =
+	mongoose.models.Completed || mongoose.model('Completed', completedSchema);

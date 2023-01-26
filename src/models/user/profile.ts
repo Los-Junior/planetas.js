@@ -1,5 +1,5 @@
 import type { Profile, User } from '@auth/core/types';
-import mongoose, { Schema, model, Model, Document } from 'mongoose';
+import mongoose from 'mongoose';
 import { Personal, type UserPersonalInfoI } from './personal';
 
 interface UserProfileI {
@@ -7,19 +7,19 @@ interface UserProfileI {
 	personal: string | UserPersonalInfoI;
 }
 
-interface ProfileModelI extends Model<UserProfileI> {
-	createNew(userId: string): Promise<Document<any, null, UserProfileI>>;
-	updateLastSeen(userId: string): Promise<Document<any, null, UserProfileI>>;
+interface ProfileModelI extends mongoose.Model<UserProfileI> {
+	createNew(userId: string): Promise<mongoose.Document<any, null, UserProfileI>>;
+	updateLastSeen(userId: string): Promise<mongoose.Document<any, null, UserProfileI>>;
 }
 
-const profileSchema = new Schema<UserProfileI, ProfileModelI>(
+const profileSchema = new mongoose.Schema<UserProfileI, ProfileModelI>(
 	{
 		user: {
-			type: Schema.Types.ObjectId,
+			type: mongoose.Schema.Types.ObjectId,
 			ref: 'User'
 		},
 		personal: {
-			type: Schema.Types.ObjectId,
+			type: mongoose.Schema.Types.ObjectId,
 			ref: 'Personal'
 		}
 	},
@@ -41,4 +41,4 @@ profileSchema.static('updateLastSeen', async function (userId) {
 
 export const UserProfile =
 	(mongoose.models.UserProfile as ProfileModelI) ||
-	model<UserProfileI, ProfileModelI>('UserProfile', profileSchema);
+	mongoose.model<UserProfileI, ProfileModelI>('UserProfile', profileSchema);

@@ -1,4 +1,4 @@
-import mongoose, { Schema, model } from 'mongoose';
+import mongoose from 'mongoose';
 
 export interface UserPersonalInfoI {
 	user: string;
@@ -11,9 +11,9 @@ export interface UserPersonalInfoI {
 	lastSeen: String;
 }
 
-const personalSchema = new Schema({
+const personalSchema = new mongoose.Schema({
 	user: {
-		type: Schema.Types.ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User'
 	},
 	location: String,
@@ -27,4 +27,4 @@ const personalSchema = new Schema({
 	}
 });
 
-export const Personal = mongoose.models.Personal || model('Personal', personalSchema);
+export const Personal = mongoose.models.Personal || mongoose.model('Personal', personalSchema);

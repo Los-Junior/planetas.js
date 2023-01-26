@@ -1,14 +1,14 @@
-import mongoose, { Schema, model } from 'mongoose';
+import mongoose from 'mongoose';
 
-const CreatedSchema = new Schema(
+const CreatedSchema = new mongoose.Schema(
 	{
 		challenge: {
-			type: Schema.Types.ObjectId,
+			type: mongoose.Schema.Types.ObjectId,
 			ref: 'Challenge',
 			required: true
 		},
 		user: {
-			type: Schema.Types.ObjectId,
+			type: mongoose.Schema.Types.ObjectId,
 			ref: 'User',
 			required: true
 		}
@@ -17,4 +17,4 @@ const CreatedSchema = new Schema(
 );
 
 export const CreatedChallenge =
-	mongoose.models.CreatedChallenge || model('CreatedChallenge', CreatedSchema);
+	mongoose.models.CreatedChallenge || mongoose.model('CreatedChallenge', CreatedSchema);
