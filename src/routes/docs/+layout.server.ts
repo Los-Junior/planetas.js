@@ -12,7 +12,8 @@ export const load = (async (event) => {
 
 		return {
 			md: content,
-			session
+			session,
+			path
 		};
 	} catch (err) {
 		return { session };
