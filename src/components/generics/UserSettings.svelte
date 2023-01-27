@@ -42,7 +42,7 @@
 {:else}
 	<a href={`/login`}>
 		<button
-			class="px-3 py-1 bg-brand-dark-purple border border-brand-light-purple tex-twhite rounded"
+			class="px-3 py-1 bg-brand-dark-purple border border-brand-light-purple text-white rounded text-[9px] md:text-base"
 			>Registrarme</button
 		>
 	</a>

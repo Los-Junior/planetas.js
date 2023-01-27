@@ -44,7 +44,7 @@
 </div>
 
 <MainContainer>
-	<div class="mainContainer py-20">
+	<!-- <div class="mainContainer py-20">
 		<h1 class="text-5xl text-white">Por qué?</h1>
 		<div class="grid grid-cols-4 text-white gap-20 py-10">
 			{#each features as feature}
@@ -55,7 +55,7 @@
 				</div>
 			{/each}
 		</div>
-	</div>
+	</div> -->
 
 	<h1 id="retos" class="text-5xl text-white">Problemas a resolver</h1>
 	<div class="grid grid-cols-4 gap-10 py-20">
