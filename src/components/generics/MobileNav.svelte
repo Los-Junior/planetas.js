@@ -4,6 +4,34 @@
 	import IoIosMenu from 'svelte-icons/io/IoIosMenu.svelte';
 	export let isOpen = false;
 	const user = $page.data.session?.user;
+	const suggestions: { [key: number]: any } = {
+		1: {
+			title: 'Reta a tus amigos, crea un reto.',
+			href: '/retos/nuevo'
+		},
+		2: {
+			title: 'Que gusto verte de vuelta.',
+			href: '#'
+		},
+		3: {
+			title: 'Reta a tus amigos, comparte tus retos.',
+			href: '/docs/retos'
+		},
+		4: {
+			title: '¿Qué tal si creas un reto?',
+			href: '/retos/nuevo'
+		},
+		5: {
+			title: 'Resuelve un reto. ⭐️',
+			href: '/retos'
+		},
+		6: {
+			title: 'Ya viste los docs?',
+			href: '/docs'
+		}
+	};
+	const random = Math.floor(Math.random() * 6) + 1;
+	$: suggestion = suggestions[random];
 </script>
 
 <button
@@ -77,11 +105,14 @@
 							</li>
 						</ul>
 						{#if user}
-							<div
-								class="w-full py-2 bg-brand-dark-purple border border-brand-light-purple rounded"
-							>
-								<p>Hola {user.name} 👋</p>
-							</div>
+							<a href={suggestion.href}>
+								<div
+									class="w-full py-2 bg-brand-dark-purple border border-brand-light-purple rounded px-4 flex flex-col items-center text-sm"
+								>
+									<p>Hola {user.name} 👋</p>
+									{suggestion.title}
+								</div>
+							</a>
 						{:else}
 							<a href="/login">
 								<button
