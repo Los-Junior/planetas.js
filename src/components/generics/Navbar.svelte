@@ -12,7 +12,7 @@
 		<a href={`/`}>
 			<div class="flex space-x-2 items-center">
 				<img
-					src={'/advent-logo.png'}
+					src={'/orbital-rays.png'}
 					alt="Logo de Advent of Juniors - Resuelve problemas de programación"
 					class="w-6 h-6"
 				/>
